@@ -11,13 +11,13 @@ if(isset($_GET['p'])){
 
 ob_start();
 if($page==='home'){
-    require ROOT.'\pages\articles\home.php';
+    require ROOT.'\pages\admin\articles\index.php';
 }
 else if($page==='article.show'){
-    require ROOT.'\pages\articles\show.php';
+    require ROOT.'\pages\admin\articles\show.php';
 }
 else if($page==='article.category'){
-    require ROOT.'\pages\articles\category.php';
+    require ROOT.'\pages\admin\articles\category.php';
 }
 else if($page==='404'){
     require ROOT.'\pages\404.php';

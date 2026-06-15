@@ -8,7 +8,7 @@ class ArticleEntity extends Entity
 
     public function getUrl()
     {
-        return 'index.php?p=article&id=' . $this->id;
+        return 'index.php?p=article.show&id=' . $this->id;
     }
 
     public function getExtrait()
@@ -24,6 +24,6 @@ class ArticleEntity extends Entity
 
     public function getCategoryUrl()
     {
-        return 'index.php?p=category&id=' . $this->category_id;
+        return 'index.php?p=article.category&id=' . $this->category_id;
     }
 }

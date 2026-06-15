@@ -28,10 +28,10 @@ class Table
     }
     public function all():array
     {
-        return $this->query("select * from ".$this->table);
+        return $this->query("select * from {$this->table}");
     }
     public function find(string $id):array
     {
-        return $this->query("select * from ".$this->table." where id=?",[$id]);
+        return $this->query("select * from {$this->table} where id=?",[$id]);
     }
 }

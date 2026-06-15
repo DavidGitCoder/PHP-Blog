@@ -4,6 +4,8 @@ $cat = App::getInstance()->getTable('Category')->find($_GET['id']);
 $articles = App::getInstance()->getTable('Article')->findByCategory($_GET['id']);
 $categories = App::getInstance()->getTable('Category')->all();
 if(!$cat) App::notFound();
+App::getInstance()->title= $cat[0]->title;
+
 ?>
 <h1>Articles in <?= $cat[0]->title ?></h1>
 <div class="row">

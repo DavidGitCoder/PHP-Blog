@@ -1,6 +1,6 @@
 <?php
 
-$post =App::getInstance()->getTable('Article')->singleWithCategory($_GET['id']);
+$post =App::getInstance()->getTable('Article')->find($_GET['id']);
 if (!$post) App::notFound();
 App::getInstance()->title=$post[0]->title;
 ?>

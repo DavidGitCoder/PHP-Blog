@@ -17,7 +17,7 @@ class ArticleTable extends Table
                             order by a.date desc
                             ");
     }
-    public function singleWithCategory(string $id): array
+    public function find(string $id): array
     {
         return $this->query("
                             select a.*, c.id as category_id, c.title as category_title

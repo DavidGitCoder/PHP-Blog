@@ -8,6 +8,6 @@ class CategoryEntity extends Entity
 {
 public function getUrl()
 {
-    return 'index.php?p=category&id='.$this->id;
+    return 'index.php?p=article.category&id='.$this->id;
 }
 }
