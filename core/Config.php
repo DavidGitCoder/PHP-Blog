@@ -17,7 +17,6 @@ class Config
 
     private function __construct(string $file)
     {
-        $this->id=uniqid();
         $this->settings = require $file;
     }
     public function get(string $key){

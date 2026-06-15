@@ -20,10 +20,18 @@ class Table
 
     public function query(string $statement, array $attributes = null): array
     {
+        $class_name=str_replace('Table','Entity',get_called_class());
          if ($attributes) {
-            return $this->db->prepare($statement, $attributes, get_called_class());
+            return $this->db->prepare($statement, $attributes, $class_name);
         }
-        return $this->db->query("$statement", get_called_class());
+        return $this->db->query("$statement", $class_name);
     }
-
+    public function all():array
+    {
+        return $this->query("select * from ".$this->table);
+    }
+    public function find(string $id):array
+    {
+        return $this->query("select * from ".$this->table." where id=?",[$id]);
+    }
 }

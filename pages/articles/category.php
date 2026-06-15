@@ -1,13 +1,9 @@
 <?php
 
-use App\Apps;
-use App\Table\Category;
-use App\Table\Article;
-
-$cat = Category::find($_GET['id']);
-$articles = Article::lastByCategory($_GET['id']);
-$categories = Category::getAll();
-if(!$cat) Apps::notFound();
+$cat = App::getInstance()->getTable('Category')->find($_GET['id']);
+$articles = App::getInstance()->getTable('Article')->findByCategory($_GET['id']);
+$categories = App::getInstance()->getTable('Category')->all();
+if(!$cat) App::notFound();
 ?>
 <h1>Articles in <?= $cat[0]->title ?></h1>
 <div class="row">

@@ -6,5 +6,7 @@ use Core\Table\Table;
 
 class CategoryTable extends Table
 {
-    protected $table = "categories lol";
+    protected $table = "category";
+
+
 }

@@ -1,13 +1,8 @@
 <?php
 
-use App\Table\Article;
-use App\Apps;
-
-$post = Article::find($_GET['id']);
-if (!$post) Apps::notFound();
-//$category = Category::find($post[0]->category_id);
-
-Apps::setTitle($post[0]->title);
+$post =App::getInstance()->getTable('Article')->singleWithCategory($_GET['id']);
+if (!$post) App::notFound();
+App::getInstance()->title=$post[0]->title;
 ?>
 <div class="flex-column justify-content-between align-items-start p-5">
     <h2>
