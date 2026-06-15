@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Table;
+namespace App\Table_Discard;
 
 class Category extends Table
 {
