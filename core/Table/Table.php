@@ -67,4 +67,9 @@ class Table
         $values = implode(',', $values);
         return $this->query("insert into {$this->table} ($fields) values($values)", $params);
     }
+
+    public function delete($id)
+    {
+        return $this->query("delete from {$this->table} where id=?", [$id]);
+    }
 }
