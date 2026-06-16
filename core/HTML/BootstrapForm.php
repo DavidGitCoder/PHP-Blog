@@ -43,7 +43,6 @@ class BootstrapForm extends Form
                ';
 
         foreach ($options as $element) {
-            var_dump($element);
 
             $selected = "";
             $field = $this->getValue($name);

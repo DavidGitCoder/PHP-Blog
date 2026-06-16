@@ -25,6 +25,7 @@
                 <!--                    <a class="navbar-brand" href="index.php?p=login">Login</a>-->
                 <!--                --><?php //} ?>
                 <a class="navbar-brand" href="index.php?p=login">Login</a>
+                <a class="navbar-brand" href="admin.php">Admin</a>
 
             </div>
         </div>

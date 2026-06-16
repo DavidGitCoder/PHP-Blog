@@ -30,6 +30,9 @@ else if($page==='article.add'){
 else if($page==='article.edit'){
     require ROOT.'\pages\admin\articles\edit.php';
 }
+else if($page==='article.delete'){
+    require ROOT.'\pages\admin\articles\delete.php';
+}
 else if($page==='article.category'){
     require ROOT.'\pages\admin\articles\category.php';
 }

@@ -25,7 +25,10 @@ $posts = $app->getTable('Article')->allWithCategory();
         <tr>
             <td>
                 <a href="?p=article.edit&id=<?= $post->id ?>" class="btn">🖊️</a>
-                <a href="?p=article.edit&id=<?= $post->id ?>" class="btn">🗑️</a>
+                <form action="?p=article.delete" method="post">
+                    <input type="hidden" name="id" value="<?= $post->id ?>">
+                    <button type="submit" class="btn btn-outline-danger" href="?p=article.delete&id=<?= $post->id ?>">🗑️</button>
+                </form>
             </td>
             <td><a href="<?= $post->url ?>"><?= $post->id ?></a>
             </td>
