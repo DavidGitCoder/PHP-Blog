@@ -13,7 +13,7 @@ class App
     public static function getInstance()
     {
         if (is_null(self::$_instance)) {
-            echo "I'm a new App Instance!";
+//            echo "I'm a new App Instance!";
             self::$_instance = new App();
         }
         return self::$_instance;
@@ -34,7 +34,7 @@ class App
         return new $class_name($this->getDb());
     }
 
-    private function getDb()
+    public function getDb()
     {
         if (is_null($this->db_instance)) {
             $config = Config::getInstance(ROOT . '\config\config.php');
@@ -44,7 +44,14 @@ class App
     }
     public static function notFound()
     {
-        require ROOT.'\pages\404.php';
+        header('HTTP/1.0 403 Forbidden');
+        die('Page Not Found');
+
+    }
+    function forbidden()
+    {
+        header('HTTP/1.0 403 Forbidden');
+        die('Forbidden Access');
     }
 
 }
