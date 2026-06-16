@@ -50,10 +50,14 @@ class MySqlDatabase extends Database
         return $req->fetchAll();;
     }
 
-    public function prepare($statement, $params, $class_name): array
+    public function prepare($statement, $params, $class_name=null): array
     {
         $req = $this->getPDO()->prepare($statement, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
-        $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        if(is_null($class_name)){
+            $req->setFetchMode(PDO::FETCH_OBJ);
+        }else{
+            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        }
 
         return $req->execute($params) ? $req->fetchAll() : [];
     }

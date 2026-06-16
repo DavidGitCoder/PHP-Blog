@@ -1,14 +1,22 @@
 <?php
+use Core\Auth\DBAuth;
 
 define('ROOT',dirname(__DIR__));
 require ROOT.'\app\App.php';
 App::load();
 
+$app=app::getInstance();
+
 $page='home';
 if(isset($_GET['p'])){
     $page=$_GET['p'];
 }
-
+// Auth
+$auth=new DBAuth($app->getDb());
+if(!$auth->isLogged()){
+    $app->forbidden();
+}
+echo $auth->getUserId().' is connected';
 ob_start();
 if($page==='home'){
     require ROOT.'\pages\admin\articles\index.php';

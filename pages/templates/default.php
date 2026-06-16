@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= App::getInstance()->title?></title>
+    <title><?= App::getInstance()->title ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <meta name="theme-color" content="#712cf9">
@@ -18,14 +18,21 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.php?p=home">Home</a>
-                <a class="navbar-brand" href="index.php?p=single">Single</a>
+                <a class="navbar-brand" href="index.php?p=articles.show">Single</a>
+                <!--                --><?php //if ($auth->isLogged()){?>
+                <!--                    <a class="navbar-brand" href="index.php?p=login">Login</a>-->
+                <!--                --><?php //}else{?>
+                <!--                    <a class="navbar-brand" href="index.php?p=login">Login</a>-->
+                <!--                --><?php //} ?>
+                <a class="navbar-brand" href="index.php?p=login">Login</a>
+
             </div>
         </div>
     </nav>
 </header>
 <div class="container">
     <div class="starter-template" style="padding-top:100px;">
-    <?= $content; ?>
+        <?= $content; ?>
     </div>
 </div>
 </body>

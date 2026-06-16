@@ -13,6 +13,9 @@ ob_start();
 if($page==='home'){
     require ROOT.'\pages\articles\home.php';
 }
+else if($page==='login'){
+    require ROOT.'\pages\users\login.php';
+}
 else if($page==='article.show'){
     require ROOT.'\pages\articles\show.php';
 }
