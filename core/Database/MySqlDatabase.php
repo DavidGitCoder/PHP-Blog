@@ -39,26 +39,44 @@ class MySqlDatabase extends Database
         return $this->pdo;
     }
 
-    public function query($statement, $class_name=null): array
+    public function query($statement, $class_name = null): array
     {
         $req = $this->getPDO()->query($statement);
-        if(is_null($class_name)){
+
+        if(
+            strpos(strtoupper($statement),"UPDATE")===0 ||
+            strpos(strtoupper($statement),"INSERT")===0 ||
+            strpos(strtoupper($statement),"DELETE")===0
+        )
+        {
+            return [$req];
+        }
+
+        if (is_null($class_name)) {
             $req->setFetchMode(PDO::FETCH_OBJ);
-        }else{
+        } else {
             $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
         }
         return $req->fetchAll();;
     }
 
-    public function prepare($statement, $params, $class_name=null): array
+    public function prepare($statement, $params, $class_name = null):array
     {
         $req = $this->getPDO()->prepare($statement, [PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY]);
-        if(is_null($class_name)){
+        if (is_null($class_name)) {
             $req->setFetchMode(PDO::FETCH_OBJ);
-        }else{
+        } else {
             $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
         }
-
-        return $req->execute($params) ? $req->fetchAll() : [];
+        $res = $req->execute($params);
+        if(
+            strpos(strtoupper($statement),"UPDATE")===0 ||
+            strpos(strtoupper($statement),"INSERT")===0 ||
+            strpos(strtoupper($statement),"DELETE")===0
+            )
+        {
+            return [$res];
+        }
+        return  $res ? $req->fetchAll() : [];
     }
 }

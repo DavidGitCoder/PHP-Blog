@@ -1,10 +1,17 @@
 <?php
 
 namespace App\Entity;
+
 use Core\Entity\Entity;
 
 class ArticleEntity extends Entity
 {
+    public $category;
+
+    public function __construct()
+    {
+        $this->category = $this->category_id;
+    }
 
     public function getUrl()
     {

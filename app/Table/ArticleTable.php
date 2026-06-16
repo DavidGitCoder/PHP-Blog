@@ -30,4 +30,5 @@ class ArticleTable extends Table
     {
         return $this->query("select * from article where category_id=?", [$id]);
     }
+
 }

@@ -24,6 +24,9 @@ if($page==='home'){
 else if($page==='article.show'){
     require ROOT.'\pages\admin\articles\show.php';
 }
+else if($page==='article.add'){
+    require ROOT.'\pages\admin\articles\add.php';
+}
 else if($page==='article.edit'){
     require ROOT.'\pages\admin\articles\edit.php';
 }

@@ -34,4 +34,17 @@ class Table
     {
         return $this->query("select * from {$this->table} where id=?",[$id]);
     }
+    public function update($id,$data)
+    {
+        $fields=[];
+        $values=[];
+
+        foreach($data as $key => $val){
+            $fields[] = "$key = ?";
+            $values[]= $val;
+        }
+        $values[]=$id;
+        $fields=implode(',',$fields);
+        return $this->query("update {$this->table} set $fields where id=?", $values);
+    }
 }
