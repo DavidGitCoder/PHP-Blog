@@ -1,4 +1,6 @@
 <?php
+use App\Controller\ArticleController;
+use App\Controller\UserController;
 
 define('ROOT',dirname(__DIR__));
 require ROOT.'\app\App.php';
@@ -9,26 +11,24 @@ if(isset($_GET['p'])){
     $page=$_GET['p'];
 }
 
-ob_start();
+$controller = new ArticleController();
+
 if($page==='home'){
-    require ROOT.'\pages\articles\home.php';
+    $controller->index();
 }
 else if($page==='login'){
-    require ROOT.'\pages\users\login.php';
+    $controller = new UserController();
+    $controller->login();
 }
 else if($page==='article.show'){
-    require ROOT.'\pages\articles\show.php';
+    $controller->show();
 }
 else if($page==='article.category'){
-    require ROOT.'\pages\articles\category.php';
+    $controller->categories();
 }
 else if($page==='404'){
     require ROOT.'\pages\404.php';
 
 }
-$content=ob_get_clean();
-
-require ROOT.'\pages\templates\default.php';
-
-
 ?>
+

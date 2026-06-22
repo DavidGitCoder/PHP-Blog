@@ -1,7 +1,7 @@
-<h1>Hello, world!</h1>
-<p class="lead">What you got</p>
+<h1>Your Articles</h1>
+<p class="lead">Here is a list of all your article and categories</p>
 <?php
-$posts = App::getInstance()->getTable('Article')->allWithCategory();
+
 ?>
 <div class="row">
     <div class="col-sm-8">
@@ -33,7 +33,6 @@ $posts = App::getInstance()->getTable('Article')->allWithCategory();
     </div>
     <div class="col-sm-4">
         <p><?php
-            $categories = App::getInstance()->getTable('Category')->all();
             foreach ($categories as $category):
             ?>
         <ul>

@@ -18,20 +18,9 @@ if(!$auth->isLogged()){
 }
 
 ob_start();
+// ARTICLES
 if($page==='home'||$page==='article.admin'){
     require ROOT.'\pages\admin\articles\index.php';
-}
-if($page==='category.admin'){
-    require ROOT.'\pages\admin\categories\index.php';
-}
-if($page==='category.add'){
-    require ROOT.'\pages\admin\categories\add.php';
-}
-if($page==='category.edit'){
-    require ROOT.'\pages\admin\categories\edit.php';
-}
-if($page==='category.delete'){
-    require ROOT.'\pages\admin\categories\delete.php';
 }
 else if($page==='article.show'){
     require ROOT.'\pages\admin\articles\show.php';
@@ -47,6 +36,19 @@ else if($page==='article.delete'){
 }
 else if($page==='article.category'){
     require ROOT.'\pages\admin\articles\category.php';
+}
+// CATEGORIES
+if($page==='category.admin'){
+    require ROOT.'\pages\admin\categories\index.php';
+}
+if($page==='category.add'){
+    require ROOT.'\pages\admin\categories\add.php';
+}
+if($page==='category.edit'){
+    require ROOT.'\pages\admin\categories\edit.php';
+}
+if($page==='category.delete'){
+    require ROOT.'\pages\admin\categories\delete.php';
 }
 else if($page==='404'){
     require ROOT.'\pages\404.php';
