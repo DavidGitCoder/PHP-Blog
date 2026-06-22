@@ -5,23 +5,40 @@ use Core\Controller\AppController;
 use \App;
 class ArticleController extends AppController
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->loadModel('Article');
+        $this->loadModel('Category');
+    }
     public function index()
     {
-        $posts = App::getInstance()->getTable('Article')->allWithCategory();
-        $categories = App::getInstance()->getTable('Category')->all();
+        $posts = $this->Article->allWithCategory();
+        $categories = $this->Category->all();
         $this->render('articles.index', compact('posts','categories'));
     }
 
     public function category()
     {
+        $cat_model =$this->Category;
+        $cat = $cat_model->find($_GET['id']);
+        $articles = $this->Article->findByCategory($_GET['id']);
+        $categories = $cat_model->all();
+        if(!$cat) $this->notFound();
+        App::getInstance()->title= $cat[0]->title;
 
-        require ROOT.'\pages\articles\category.php';
+        $this->render('articles.category', compact('cat','articles','categories'));
+
 
     }
 
     public function show()
     {
-        require ROOT.'\pages\articles\show.php';
-
+        $post =$this->Article->find($_GET['id']);
+        if (!$post) $this->notFound();
+        App::getInstance()->title=$post[0]->title;
+        $this->render('articles.show', compact('post'));
     }
+
+
 }

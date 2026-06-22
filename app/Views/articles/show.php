@@ -1,9 +1,3 @@
-<?php
-
-$post =App::getInstance()->getTable('Article')->find($_GET['id']);
-if (!$post) App::notFound();
-App::getInstance()->title=$post[0]->title;
-?>
 <div class="flex-column justify-content-between align-items-start p-5">
     <h2>
         <?= $post[0]->title ?>

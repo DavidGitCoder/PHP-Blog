@@ -17,7 +17,6 @@ if(!$auth->isLogged()){
     $app->forbidden();
 }
 
-ob_start();
 // ARTICLES
 if($page==='home'||$page==='article.admin'){
     require ROOT.'\pages\admin\articles\index.php';
@@ -54,9 +53,5 @@ else if($page==='404'){
     require ROOT.'\pages\404.php';
 
 }
-$content=ob_get_clean();
-
-require ROOT.'\pages\templates\default.php';
-
 
 ?>

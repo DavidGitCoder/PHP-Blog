@@ -42,16 +42,6 @@ class App
         }
         return $this->db_instance;
     }
-    public static function notFound()
-    {
-        header('HTTP/1.0 403 Forbidden');
-        die('Page Not Found');
 
-    }
-    function forbidden()
-    {
-        header('HTTP/1.0 403 Forbidden');
-        die('Forbidden Access');
-    }
 
 }

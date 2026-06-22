@@ -2,10 +2,17 @@
 
 namespace App\Controller;
 
-class UserController
+use Core\Controller\AppController;
+
+class UserController extends AppController
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->loadModel('Users');
+    }
     public function login()
     {
-        require ROOT.'\pages\users\login.php';
+
     }
 }

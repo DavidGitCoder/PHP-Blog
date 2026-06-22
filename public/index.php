@@ -24,10 +24,10 @@ else if($page==='article.show'){
     $controller->show();
 }
 else if($page==='article.category'){
-    $controller->categories();
+    $controller->category();
 }
 else if($page==='404'){
-    require ROOT.'\pages\404.php';
+//    $controller->notFound();
 
 }
 ?>
