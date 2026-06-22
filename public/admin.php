@@ -16,10 +16,22 @@ $auth=new DBAuth($app->getDb());
 if(!$auth->isLogged()){
     $app->forbidden();
 }
-echo $auth->getUserId().' is connected';
+
 ob_start();
-if($page==='home'){
+if($page==='home'||$page==='article.admin'){
     require ROOT.'\pages\admin\articles\index.php';
+}
+if($page==='category.admin'){
+    require ROOT.'\pages\admin\categories\index.php';
+}
+if($page==='category.add'){
+    require ROOT.'\pages\admin\categories\add.php';
+}
+if($page==='category.edit'){
+    require ROOT.'\pages\admin\categories\edit.php';
+}
+if($page==='category.delete'){
+    require ROOT.'\pages\admin\categories\delete.php';
 }
 else if($page==='article.show'){
     require ROOT.'\pages\admin\articles\show.php';

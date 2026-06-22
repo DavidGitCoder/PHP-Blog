@@ -1,11 +1,19 @@
 <?php
 $posts = $app->getTable('Article')->allWithCategory();
+$categories = $app->getTable('Category')->all();
+
+$type = $_GET['p'] === 'categories.admin' ?
+                                        ["type"=>"article", "title"=>"Articles"]
+                                        : ["type"=>"category", "title"=>"Catégories"];
 ?>
+
+<p>Gérer les <a href="?p=<?=$type["type"]?>.admin"><?=$type["title"]?></a></p>
 <h1>
     ADMININISTRER LES ARTICLES
 </h1>
+
 <div class="button">
-    <a href="admin.php?p=article.add">
+    <a href="?p=article.add">
         <button type="button" class="btn btn-success my-2">ADD</button>
     </a>
 </div>
@@ -45,4 +53,3 @@ $posts = $app->getTable('Article')->allWithCategory();
     <?php endforeach; ?>
     </tbody>
 </table>
-

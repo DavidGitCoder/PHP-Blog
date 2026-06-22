@@ -63,8 +63,10 @@ class Table
             $values[] = '?';
             $params[] = $val;
         }
+
         $fields = implode(',', $fields);
         $values = implode(',', $values);
+
         return $this->query("insert into {$this->table} ($fields) values($values)", $params);
     }
 
