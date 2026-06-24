@@ -9,7 +9,12 @@ class UserController extends AppController
     public function __construct()
     {
         parent::__construct();
-        $this->loadModel('Users');
+        $user = $this->loadModel('Users');
+        // Auth
+        $auth=new DBAuth($app->getDb());
+        if(!$auth->isLogged()){
+            $app->forbidden();
+        }
     }
     public function login()
     {
