@@ -1,10 +1,20 @@
 <?php
 
-namespace app\Controller\Admin;
+namespace App\Controller\Admin;
 
-use Core\Controller\Controller;
+use App\Controller\AppController;
+use App;
+use Core\Auth\DBAuth;
 
-class AppControler extends Controller
+class AppControler extends AppController
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $auth=new DBAuth(App::getInstance()->getDb());
+        if(!$auth->isLogged()){
+            $this->forbidden();
+        }
 
+    }
 }

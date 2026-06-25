@@ -1,8 +1,8 @@
 <?php
 namespace App\Controller;
 
-use Core\Controller\AppController;
-use \App;
+use App;
+
 class ArticleController extends AppController
 {
     public function __construct()

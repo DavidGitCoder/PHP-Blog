@@ -11,7 +11,7 @@ $page='home';
 if(isset($_GET['p'])){
     $page=$_GET['p'];
 }
-// Auth
+
 $auth=new DBAuth($app->getDb());
 if(!$auth->isLogged()){
     $app->forbidden();

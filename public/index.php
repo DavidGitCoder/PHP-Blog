@@ -1,34 +1,25 @@
 <?php
-use App\Controller\ArticleController;
-use App\Controller\UserController;
-
 define('ROOT',dirname(__DIR__));
-require ROOT.'\app\App.php';
+require ROOT.'/app/App.php';
 App::load();
 
-$page='home';
+$page='article.index';
 if(isset($_GET['p'])){
     $page=$_GET['p'];
 }
+$page=explode('.', $page);
+var_dump($page);
+if($page[0]==="admin"){
+    $controller='Admin\\'.ucfirst($page[1]);
+    $action=$page[2];
+}else{
+    $controller=ucfirst($page[0]);
+    $action=$page[1];
+}
+$controller= '\App\Controller\\' . $controller . 'Controller';
+var_dump($controller, $action);
 
-$controller = new ArticleController();
-
-if($page==='home'){
-    $controller->index();
-}
-else if($page==='login'){
-    $controller = new UserController();
-    $controller->login();
-}
-else if($page==='article.show'){
-    $controller->show();
-}
-else if($page==='article.category'){
-    $controller->category();
-}
-else if($page==='404'){
-//    $controller->notFound();
-
-}
+$controller=new $controller();
+$controller->$action();
 ?>
 

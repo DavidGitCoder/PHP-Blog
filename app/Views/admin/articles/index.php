@@ -1,19 +1,11 @@
-<?php
-$posts = $app->getTable('Article')->allWithCategory();
-$categories = $app->getTable('Category')->all();
 
-$type = $_GET['p'] === 'categories.admin' ?
-                                        ["type"=>"article", "title"=>"Articles"]
-                                        : ["type"=>"category", "title"=>"Catégories"];
-?>
-
-<p>Gérer les <a href="?p=<?=$type["type"]?>.admin"><?=$type["title"]?></a></p>
+<p>Gérer les <a href="?p=admin.<?=$type["type"]?>.index"><?=$type["title"]?></a></p>
 <h1>
     ADMININISTRER LES ARTICLES
 </h1>
 
 <div class="button">
-    <a href="?p=article.add">
+    <a href="?p=admin.article.add">
         <button type="button" class="btn btn-success my-2">ADD</button>
     </a>
 </div>
@@ -32,12 +24,12 @@ $type = $_GET['p'] === 'categories.admin' ?
     <?php foreach ($posts as $post): ?>
         <tr>
             <td>
-                <a href="?p=article.edit&id=<?= $post->id ?>" class="btn">🖊️</a>
-                <form action="?p=article.delete" method="post">
+                <a href="?p=admin.article.edit&id=<?= $post->id ?>" class="btn">🖊️</a>
+                <form action="?p=admin.article.delete" method="post">
                     <input type="hidden" name="id" value="<?= $post->id ?>">
                     <button type="submit"
                             class="btn btn-outline-danger"
-                            href="?p=article.delete&id=<?= $post->id ?>">🗑️</button>
+                            href="?p=admin.article.delete&id=<?= $post->id ?>">🗑️</button>
                 </form>
             </td>
             <td><a href="<?= $post->url ?>"><?= $post->id ?></a>

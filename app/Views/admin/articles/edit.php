@@ -1,34 +1,13 @@
-<?php
-
-use \Core\HTML\BootstrapForm;
-
-$article_id = $_GET['id'];
-$articleTable = $app->getTable('Article');
-
-$article = $articleTable->find($article_id);
-$categories = $app->getTable('Category')->all();
-if (!empty($_POST)) {
-    $result = $articleTable->update($article_id, [
-            "title" => $_POST ['title'],
-            "content" => $_POST ['content'],
-            "category_id" => $_POST['category']
-    ]);
-    if ($result) {
-        ?>
-        <div class="alert alert-success">Sucessfully Updated!</div>
-        <?php
-    } else {
-        ?>
-        <div class="alert alert-warning">Updated Failed</div>
-        <?php
-    }
-}
-$data = !empty($_POST) ? $_POST : $article[0];
-
-
-$form = new BootstrapForm($data);
-
-?>
+<?php if($error_add):?>
+    <div class="alert alert-danger">An error occured creating the article</div>
+<?php elseif(!empty($_POST)):?>
+    <div class="alert alert-success">Successfully created</div>
+<?php endif; ?>
+<?php if($error_edit):?>
+    <div class="alert alert-danger">An error occured updating the article</div>
+<?php elseif(!empty($_POST)):?>
+    <div class="alert alert-success">Successfully updated</div>
+<?php endif; ?>
 <h2>Edit Article: <span><em><?= $article[0]->title ?></em></span></h2>
 <form method="post">
     <?= $form->input('title', 'Title') ?>

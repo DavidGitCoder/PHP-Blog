@@ -1,11 +1,12 @@
 <?php
 
-namespace Core\Controller;
-use \App;
+namespace App\Controller;
+use App;
+use Core\Controller\Controller;
+
 class AppController extends Controller
 {
-    protected $viewPath;
-    protected $template = 'default';
+    protected string $template = 'default';
 
     public function __construct()
     {

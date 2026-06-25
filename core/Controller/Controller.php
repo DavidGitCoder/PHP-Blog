@@ -4,8 +4,8 @@ namespace Core\Controller;
 
 class Controller
 {
-    protected $viewPath;
-    protected $template;
+    protected string $viewPath;
+    protected string $template;
 
     protected function render(string $view, array $params=[])
     {

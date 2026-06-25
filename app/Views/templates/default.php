@@ -14,15 +14,15 @@
     <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" aria-label="Main navigation">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.php?p=home">Home</a>
-                <a class="navbar-brand" href="index.php?p=articles.show">Single</a>
+                <a class="navbar-brand" href="index.php?p=article.index">Home</a>
+                <a class="navbar-brand" href="index.php?p=article.show">Single</a>
                 <!--                --><?php //if ($auth->isLogged()){?>
                 <!--                    <a class="navbar-brand" href="index.php?p=login">Login</a>-->
                 <!--                --><?php //}else{?>
                 <!--                    <a class="navbar-brand" href="index.php?p=login">Login</a>-->
                 <!--                --><?php //} ?>
-                <a class="navbar-brand" href="index.php?p=login">Login</a>
-                <a class="navbar-brand" href="admin.php">Admin</a>
+                <a class="navbar-brand" href="index.php?p=user.login">Login</a>
+                <a class="navbar-brand" href="index.php?p=admin.article.index">Admin</a>
 
             </div>
         </div>
