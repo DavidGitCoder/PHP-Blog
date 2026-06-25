@@ -8,7 +8,6 @@ if(isset($_GET['p'])){
     $page=$_GET['p'];
 }
 $page=explode('.', $page);
-var_dump($page);
 if($page[0]==="admin"){
     $controller='Admin\\'.ucfirst($page[1]);
     $action=$page[2];
@@ -17,9 +16,8 @@ if($page[0]==="admin"){
     $action=$page[1];
 }
 $controller= '\App\Controller\\' . $controller . 'Controller';
-var_dump($controller, $action);
 
 $controller=new $controller();
 $controller->$action();
-?>
 
+?>
